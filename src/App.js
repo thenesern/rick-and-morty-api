@@ -9,24 +9,25 @@ import Pagination from "./components/Pagination/Pagination";
 import axios from "axios";
 
 function App() {
-  const [episodes, setEpisodes] = useState(null);
+  const [episodes, setEpisodes] = useState([]);
   const [page, setPage] = useState(1);
+  const [search, setSearch] = useState(null);
 
   // Fetching episodes from the API via axios
   useEffect(() => {
     axios
       .get(`https://rickandmortyapi.com/api/episode/?page=${page}`)
       .then((result) => setEpisodes(result));
-  }, [page]);
+  }, [page, search]);
 
   return (
     <div>
       <NavBar />
       <div>
-        <Search />
+        <Search setSearch={setSearch} />
         <div>
           {/*  <Filters /> */}
-          <Cards data={episodes} />
+          <Cards data={episodes} search={search} />
         </div>
         <Pagination
           setPage={setPage}
