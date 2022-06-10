@@ -16,20 +16,19 @@ function App() {
     axios
       .get(`https://rickandmortyapi.com/api/episode/?page=${page}`)
       .then((result) => setEpisodes(result));
-  }, []);
-  console.log(episodes);
+  }, [page]);
 
   return (
-    <>
+    <div>
       <NavBar />
-      <div className="App">
+      <div>
         <Search />
         <div>
-          <Filters />
-          <Cards />
+          {/*  <Filters /> */}
+          <Cards data={episodes} />
         </div>
       </div>
-    </>
+    </div>
   );
 }
 
