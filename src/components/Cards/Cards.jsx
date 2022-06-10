@@ -1,17 +1,24 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 /* import { useHistory } from "react-router-dom"; */
 
 const Cards = ({ data }) => {
-  const [episodes, setEpisodes] = useState(data?.data?.results);
+  const [episodes, setEpisodes] = useState(null);
   /*   const history = useHistory();
    */
   /*   const handlePush = ({ id }) => {
     history.push(`/asd`);
   };
  */
+  // Sets the data to this state coming from main state
+  useEffect(() => {
+    if (data) {
+      setEpisodes(data?.data?.results);
+    }
+  }, [data]);
+
   return (
     <div className="container mt-10 mx-auto flex flex-wrap gap-3">
-      {episodes.map((episode) => (
+      {episodes?.map((episode) => (
         <>
           <button
             /*   onClick={handlePush} */

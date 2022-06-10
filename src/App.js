@@ -4,6 +4,7 @@ import Cards from "./components/Cards/Cards";
 import Filters from "./components/Filters/Filters";
 import NavBar from "./components/NavBar/NavBar";
 import Search from "./components/Search/Search";
+import Pagination from "./components/Pagination/Pagination";
 // Axios
 import axios from "axios";
 
@@ -27,6 +28,11 @@ function App() {
           {/*  <Filters /> */}
           <Cards data={episodes} />
         </div>
+        <Pagination
+          setPage={setPage}
+          page={page}
+          length={episodes?.data?.info?.pages}
+        />
       </div>
     </div>
   );
