@@ -40,7 +40,7 @@ const Cards = ({ data, search }) => {
             <>
               <button
                 /*   onClick={handlePush} */
-                key={episode.id}
+                key={episode?.id}
                 className={
                   episode?.episode?.split("E")[1] === "01" &&
                   episode?.episode?.split("E")[0] !== "S01"
@@ -70,7 +70,7 @@ const Cards = ({ data, search }) => {
             <>
               <button
                 /*   onClick={handlePush} */
-                key={episode.id}
+                key={episode?.id}
                 className={
                   episode?.episode?.split("E")[1] === "01" &&
                   episode?.episode?.split("E")[0] !== "S01"

@@ -12,6 +12,7 @@ function App() {
   const [episodes, setEpisodes] = useState([]);
   const [page, setPage] = useState(1);
   const [search, setSearch] = useState(null);
+  const [pages, setPages] = useState([]);
 
   // Fetching episodes from the API via axios
   useEffect(() => {
@@ -19,6 +20,13 @@ function App() {
       .get(`https://rickandmortyapi.com/api/episode/?page=${page}`)
       .then((result) => setEpisodes(result));
   }, [page, search]);
+
+  // Setting the page length
+  useEffect(() => {
+    for (let i = 0; i < episodes?.data?.info?.pages; i++) {
+      pages.push(i + 1);
+    }
+  }, [pages, episodes?.data?.info?.pages]);
 
   return (
     <div>
@@ -32,6 +40,7 @@ function App() {
         <Pagination
           setPage={setPage}
           page={page}
+          pages={pages}
           length={episodes?.data?.info?.pages}
         />
       </div>
