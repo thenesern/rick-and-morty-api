@@ -9,7 +9,7 @@ const Filters = ({
   setSpecies,
 }) => {
   return (
-    <div className=" mx-auto">
+    <div className="mx-auto">
       <h2 className="text-center font-semibold mb-3">Filters</h2>
       <div className="flex flex-col justify-between gap-5">
         <div className="flex flex-col gap-3">

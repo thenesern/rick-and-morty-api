@@ -1,9 +1,8 @@
-import React, { useState, useEffect, Suspense } from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 // Components
 import Cards from "./components/Cards/Cards";
 import NavBar from "./components/NavBar/NavBar";
-import Search from "./components/Search/Search";
 import Pagination from "./components/Pagination/Pagination";
 import Episode from "./components/Episode/Episode";
 // Axios
@@ -52,19 +51,20 @@ const Home = () => {
 
   // Setting the page length
   useEffect(() => {
+    const array = [];
     for (let i = 0; i < episodes?.data?.info?.pages; i++) {
-      pages.push(i + 1);
+      array.push(i + 1);
     }
-  }, [pages, episodes?.data?.info?.pages]);
+    setPages([...array]);
+  }, [episodes?.data?.info?.pages]);
 
   return (
     <div>
       <div style={{ minHeight: "90vh" }}>
-        <Search setSearch={setSearch} />
         {isFetching ? (
           <p className="w-full text-center py-10 my-10">Loading...</p>
         ) : (
-          <Cards data={episodes} search={search} />
+          <Cards data={episodes} search={search} setSearch={setSearch} />
         )}
       </div>
       <Pagination

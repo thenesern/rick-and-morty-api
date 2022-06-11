@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
+// Router
 import { NavLink, useParams } from "react-router-dom";
+// Axios
 import axios from "axios";
+// Components
 import Filters from "../Filters/Filters";
 
 const Episode = () => {
@@ -257,7 +260,7 @@ const Episode = () => {
                     </h1>
                   )}
                   <div className="p-2">
-                    <h2 className="text-md border-b py-1 font-semibold">
+                    <h2 className="max-w-fit text-md border-b py-1 font-semibold">
                       {character?.data?.name}
                     </h2>
                     <div>
@@ -289,7 +292,7 @@ const Episode = () => {
                       </h1>
                     )}
                     <div className="p-2">
-                      <h2 className="text-md border-b py-1 font-semibold">
+                      <h2 className="max-w-fit text-md border-b py-1 font-semibold">
                         {character?.data?.name}
                       </h2>
                       <div>
@@ -323,11 +326,11 @@ const Episode = () => {
                     </h1>
                   )}
                   <div className="p-2">
-                    <h2 className="text-md border-b py-1 font-semibold">
+                    <h2 className="max-w-fit min-w-full text-md border-b py-1 font-semibold">
                       {character?.data?.name}
                     </h2>
                     <div>
-                      <h4 className="max-w-fit text-yellow-700 py-1">
+                      <h4 className="max-w-fit text-yellow-700 py-1 text-xs">
                         Location:
                         <span> </span>
                         <span>{character?.data?.location?.name}</span>

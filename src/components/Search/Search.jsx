@@ -2,10 +2,10 @@ import React from "react";
 
 const Search = ({ setSearch }) => {
   return (
-    <div className="w-full flex justify-center">
-      <form className="xl:w-2/5 flex gap-2">
+    <div className="flex mb-6 mx-auto">
+      <form className="flex mx-0 gap-2 ">
         <input
-          className="px-5 py-3 w-full bg-gray-100 outline-none rounded-sm"
+          className="w-fit mx-0 px-3 py-3 bg-gray-100 outline-none rounded-sm "
           type="text"
           onChange={(e) => {
             e.preventDefault();

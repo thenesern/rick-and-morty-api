@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
+// Router
 import { useParams } from "react-router-dom";
+// Axios
 import axios from "axios";
 
 const Character = () => {
