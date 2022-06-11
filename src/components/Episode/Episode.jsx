@@ -9,6 +9,7 @@ const Episode = () => {
   const [status, setStatus] = useState("");
   const [species, setSpecies] = useState("");
   const [gender, setGender] = useState("");
+  const [search, setSearch] = useState("");
 
   // Getting the query via useParams Hook
   const params = useParams();
@@ -55,64 +56,166 @@ const Episode = () => {
 
   // Custom Filter
   useEffect(() => {
-    if (status && species && gender) {
-      setFiltered(
-        characters?.filter(
-          (character) =>
-            character?.data?.status?.toLowerCase() === status?.toLowerCase() &&
-            character?.data?.species?.toLowerCase() ===
-              species?.toLowerCase() &&
-            character?.data?.gender?.toLowerCase() === gender?.toLowerCase()
-        )
-      );
-    } else if (status && species && !gender) {
-      setFiltered(
-        characters?.filter(
-          (character) =>
-            character?.data?.status?.toLowerCase() === status?.toLowerCase() &&
-            character?.data?.species?.toLowerCase() === species?.toLowerCase()
-        )
-      );
-    } else if (status && !species && gender) {
-      setFiltered(
-        characters?.filter(
-          (character) =>
-            character?.data?.status?.toLowerCase() === status?.toLowerCase() &&
-            character?.data?.gender?.toLowerCase() === gender?.toLowerCase()
-        )
-      );
-    } else if (!status && species && gender) {
-      setFiltered(
-        characters?.filter(
-          (character) =>
-            character?.data?.species?.toLowerCase() ===
-              species?.toLowerCase() &&
-            character?.data?.gender?.toLowerCase() === gender?.toLowerCase()
-        )
-      );
-    } else if (status) {
-      setFiltered(
-        characters?.filter(
-          (character) =>
-            character?.data?.status?.toLowerCase() === status?.toLowerCase()
-        )
-      );
-    } else if (species) {
-      setFiltered(
-        characters?.filter(
-          (character) =>
-            character?.data?.species?.toLowerCase() === species?.toLowerCase()
-        )
-      );
-    } else if (gender) {
-      setFiltered(
-        characters?.filter(
-          (character) =>
-            character?.data?.gender?.toLowerCase() === gender?.toLowerCase()
-        )
-      );
+    if (search) {
+      if (status && species && gender) {
+        setFiltered(
+          filtered?.filter(
+            (character) =>
+              character?.data?.status?.toLowerCase() ===
+                status?.toLowerCase() &&
+              character?.data?.species?.toLowerCase() ===
+                species?.toLowerCase() &&
+              character?.data?.gender?.toLowerCase() === gender?.toLowerCase()
+          )
+        );
+      } else if (status && species && !gender) {
+        setFiltered(
+          filtered?.filter(
+            (character) =>
+              character?.data?.status?.toLowerCase() ===
+                status?.toLowerCase() &&
+              character?.data?.species?.toLowerCase() === species?.toLowerCase()
+          )
+        );
+      } else if (status && !species && gender) {
+        setFiltered(
+          filtered?.filter(
+            (character) =>
+              character?.data?.status?.toLowerCase() ===
+                status?.toLowerCase() &&
+              character?.data?.gender?.toLowerCase() === gender?.toLowerCase()
+          )
+        );
+      } else if (!status && species && gender) {
+        setFiltered(
+          filtered?.filter(
+            (character) =>
+              character?.data?.species?.toLowerCase() ===
+                species?.toLowerCase() &&
+              character?.data?.gender?.toLowerCase() === gender?.toLowerCase()
+          )
+        );
+      } else if (status) {
+        setFiltered(
+          filtered?.filter(
+            (character) =>
+              character?.data?.status?.toLowerCase() === status?.toLowerCase()
+          )
+        );
+      } else if (species) {
+        setFiltered(
+          filtered?.filter(
+            (character) =>
+              character?.data?.species?.toLowerCase() === species?.toLowerCase()
+          )
+        );
+      } else if (gender) {
+        setFiltered(
+          filtered?.filter(
+            (character) =>
+              character?.data?.gender?.toLowerCase() === gender?.toLowerCase()
+          )
+        );
+      }
+    } else {
+      if (status && species && gender) {
+        setFiltered(
+          characters?.filter(
+            (character) =>
+              character?.data?.status?.toLowerCase() ===
+                status?.toLowerCase() &&
+              character?.data?.species?.toLowerCase() ===
+                species?.toLowerCase() &&
+              character?.data?.gender?.toLowerCase() === gender?.toLowerCase()
+          )
+        );
+      } else if (status && species && !gender) {
+        setFiltered(
+          characters?.filter(
+            (character) =>
+              character?.data?.status?.toLowerCase() ===
+                status?.toLowerCase() &&
+              character?.data?.species?.toLowerCase() === species?.toLowerCase()
+          )
+        );
+      } else if (status && !species && gender) {
+        setFiltered(
+          characters?.filter(
+            (character) =>
+              character?.data?.status?.toLowerCase() ===
+                status?.toLowerCase() &&
+              character?.data?.gender?.toLowerCase() === gender?.toLowerCase()
+          )
+        );
+      } else if (!status && species && gender) {
+        setFiltered(
+          characters?.filter(
+            (character) =>
+              character?.data?.species?.toLowerCase() ===
+                species?.toLowerCase() &&
+              character?.data?.gender?.toLowerCase() === gender?.toLowerCase()
+          )
+        );
+      } else if (status) {
+        setFiltered(
+          characters?.filter(
+            (character) =>
+              character?.data?.status?.toLowerCase() === status?.toLowerCase()
+          )
+        );
+      } else if (species) {
+        setFiltered(
+          characters?.filter(
+            (character) =>
+              character?.data?.species?.toLowerCase() === species?.toLowerCase()
+          )
+        );
+      } else if (gender) {
+        setFiltered(
+          characters?.filter(
+            (character) =>
+              character?.data?.gender?.toLowerCase() === gender?.toLowerCase()
+          )
+        );
+      }
     }
   }, [status, species, gender]);
+
+  // Custom Search
+  useEffect(() => {
+    if (search) {
+      if (status) {
+        setFiltered(
+          filtered?.filter((character) =>
+            character?.data?.name?.toLowerCase().includes(search?.toLowerCase())
+          )
+        );
+      } else if (gender) {
+        setFiltered(
+          filtered?.filter((character) =>
+            character?.data?.name?.toLowerCase().includes(search?.toLowerCase())
+          )
+        );
+      } else if (species) {
+        setFiltered(
+          filtered?.filter((character) =>
+            character?.data?.name?.toLowerCase().includes(search?.toLowerCase())
+          )
+        );
+      } else {
+        setFiltered(
+          characters?.filter((character) =>
+            character?.data?.name?.toLowerCase().includes(search?.toLowerCase())
+          )
+        );
+      }
+    } else {
+      setFiltered(filtered);
+      setStatus("");
+      setGender("");
+      setSpecies("");
+    }
+  }, [search]);
 
   return (
     <div className="container mx-auto">
@@ -120,19 +223,27 @@ const Episode = () => {
         Episode: {infos?.name} ({infos?.episode})
       </h1>
       <p className="text-center font-light p-1">{infos?.air_date}</p>
-      <div className="container lg:grid  lg:grid-cols-5">
-        <Filters
-          className="mx-auto col-span-1"
-          status={status}
-          gender={gender}
-          species={species}
-          setFiltered={setFiltered}
-          setStatus={setStatus}
-          setGender={setGender}
-          setSpecies={setSpecies}
-        />
-        <div className="flex col-span-4 my-10 flex-wrap justify-start gap-10 mx-auto justify-center">
-          {status || species || gender ? (
+      <div className="container lg:grid lg:grid-cols-5  my-10">
+        <div className="flex flex-col gap-10">
+          <input
+            onChange={(e) => setSearch(e.target.value)}
+            className="w-full p-2 outline-none bg-slate-200"
+            type="text"
+            placeholder="Search for a character"
+          />
+          <Filters
+            className="mx-auto col-span-1"
+            status={status}
+            gender={gender}
+            species={species}
+            setFiltered={setFiltered}
+            setStatus={setStatus}
+            setGender={setGender}
+            setSpecies={setSpecies}
+          />
+        </div>
+        <div className="flex col-span-4 flex-wrap justify-start gap-10 mx-auto justify-center">
+          {status || species || gender || search ? (
             filtered?.length > 0 ? (
               filtered?.map((character) => (
                 <NavLink
