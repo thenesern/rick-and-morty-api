@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useLayoutEffect } from "react";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 // Components
 import Cards from "./components/Cards/Cards";
 import Filters from "./components/Filters/Filters";
@@ -9,6 +10,19 @@ import Pagination from "./components/Pagination/Pagination";
 import axios from "axios";
 
 function App() {
+  return (
+    <Router>
+      <div className="App">
+        <NavBar />
+      </div>
+      <Routes>
+        <Route path="/" element={<Home />} exact />
+      </Routes>
+    </Router>
+  );
+}
+
+const Home = () => {
   const [episodes, setEpisodes] = useState([]);
   const [page, setPage] = useState(1);
   const [search, setSearch] = useState(null);
@@ -30,7 +44,6 @@ function App() {
 
   return (
     <div>
-      <NavBar />
       <div>
         <Search setSearch={setSearch} />
         <div>
@@ -46,6 +59,6 @@ function App() {
       </div>
     </div>
   );
-}
+};
 
 export default App;
