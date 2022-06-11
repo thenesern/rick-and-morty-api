@@ -120,8 +120,9 @@ const Episode = () => {
         Episode: {infos?.name} ({infos?.episode})
       </h1>
       <p className="text-center font-light p-1">{infos?.air_date}</p>
-      <div className="container xl:flex">
+      <div className="container lg:grid  lg:grid-cols-5">
         <Filters
+          className="mx-auto col-span-1"
           status={status}
           gender={gender}
           species={species}
@@ -130,14 +131,14 @@ const Episode = () => {
           setGender={setGender}
           setSpecies={setSpecies}
         />
-        <div className="flex min-w-[80%] my-10 flex-wrap justify-start gap-10 mx-auto justify-center">
+        <div className="flex col-span-4 my-10 flex-wrap justify-start gap-10 mx-auto justify-center">
           {status || species || gender ? (
             filtered?.length > 0 ? (
               filtered?.map((character) => (
                 <NavLink
                   to={`/character/${character?.data?.id}`}
                   key={character?.data?.id}
-                  className="rounded-t-xl relative transition duration-300 ease hover:shadow-lg hover:bg-slate-400 hover:text-white border-2 border-neutral-900"
+                  className="rounded-t-xl relative max-h-96 transition duration-300 ease hover:shadow-lg hover:bg-slate-400 hover:text-white border-2 border-neutral-900"
                 >
                   <img
                     alt={character?.data?.name}

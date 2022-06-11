@@ -9,7 +9,7 @@ const Filters = ({
   setSpecies,
 }) => {
   return (
-    <div className="">
+    <div className=" mx-auto">
       <h2 className="text-center font-semibold mb-3">Filters</h2>
       <div className="flex flex-col justify-between gap-5">
         <div className="flex flex-col gap-3">
@@ -290,7 +290,7 @@ const Filters = ({
         </div>
         <div className="flex flex-col gap-3">
           <h3 className="text-center bg-slate-100 py-1">Gender</h3>
-          <ul className="flex gap-3">
+          <ul className="flex flex-wrap gap-3">
             <li>
               <button
                 onClick={(e) => {
