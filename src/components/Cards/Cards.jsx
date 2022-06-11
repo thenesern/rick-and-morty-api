@@ -1,25 +1,15 @@
 import React, { useEffect, useState } from "react";
-/* import { useHistory } from "react-router-dom"; */
+import { NavLink } from "react-router-dom";
 
 const Cards = ({ data, search }) => {
   const [episodes, setEpisodes] = useState(null);
-  /*  const [filtered, setFiltered] = useState(
-    episodes.filter((e) => e.episode.split("E")[1].includes(search))
-  ); */
-  /*   const history = useHistory();
-   */
-  /*   const handlePush = ({ id }) => {
-    history.push(`/asd`);
-  };
- */
+
   // Sets the data to this state coming from main state
   useEffect(() => {
     if (search) {
-      if (Number(search)) {
+      if (Number(search) || search.includes("S" || "E")) {
         setEpisodes(
-          data?.data?.results?.filter((e) =>
-            e?.episode?.split("E")[1].includes(search)
-          )
+          data?.data?.results?.filter((e) => e?.episode?.includes(search))
         );
       } else {
         setEpisodes(
@@ -37,9 +27,8 @@ const Cards = ({ data, search }) => {
     <div className="container mt-10 mx-auto flex flex-wrap gap-3">
       {search
         ? episodes?.map((episode) => (
-            <>
+            <NavLink to={`/episode/${episode.episode}`}>
               <button
-                /*   onClick={handlePush} */
                 key={episode?.id}
                 className={
                   episode?.episode?.split("E")[1] === "01" &&
@@ -64,12 +53,11 @@ const Cards = ({ data, search }) => {
               ) : (
                 ""
               )}
-            </>
+            </NavLink>
           ))
         : episodes?.map((episode) => (
-            <>
+            <NavLink to={`/episode/${episode.episode}`}>
               <button
-                /*   onClick={handlePush} */
                 key={episode?.id}
                 className={
                   episode?.episode?.split("E")[1] === "01" &&
@@ -94,7 +82,7 @@ const Cards = ({ data, search }) => {
               ) : (
                 ""
               )}
-            </>
+            </NavLink>
           ))}
     </div>
   );

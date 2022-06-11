@@ -1,12 +1,15 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 const NavBar = () => {
   return (
     <div className="container mx-auto mb-10">
       <div className="border-b w-full inline-block border-blue-400 py-8 bg-white flex justify-between">
-        <h1 className="text-2xl font-semibold text-gray-800">
-          Rick & Morty <span className="text-blue-500">Wiki</span>
-        </h1>
+        <NavLink to="/">
+          <h1 className="text-2xl font-semibold text-gray-800">
+            Rick & Morty <span className="text-blue-500">Wiki</span>
+          </h1>
+        </NavLink>
         <div className="flex gap-2">
           <a
             href="https://rickandmortyapi.com"

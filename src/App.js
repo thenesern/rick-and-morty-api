@@ -6,6 +6,7 @@ import Filters from "./components/Filters/Filters";
 import NavBar from "./components/NavBar/NavBar";
 import Search from "./components/Search/Search";
 import Pagination from "./components/Pagination/Pagination";
+import Episode from "./components/Episode/Episode";
 // Axios
 import axios from "axios";
 
@@ -17,6 +18,7 @@ function App() {
       </div>
       <Routes>
         <Route path="/" element={<Home />} exact />
+        <Route path="/episode/:id" element={<Episode />} exact />
       </Routes>
     </Router>
   );
