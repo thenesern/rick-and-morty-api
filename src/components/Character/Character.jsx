@@ -1,16 +1,18 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import axios from "axios";
 
 const Character = () => {
+  const [character, setCharacter] = useState({});
+  const { gender, location, name, origin, species, status, image } = character;
+
   // Getting the query via useParams Hook
   const params = useParams();
 
   // We split the query to get the episode number
   const [id, setId] = useState(params?.id);
 
-  const [character, setCharacter] = useState({});
-  const { gender, location, name, origin, species, status, image } = character;
+  // If id changed then get the character
   useEffect(() => {
     axios
       .get(`https://rickandmortyapi.com/api/character/${id}`)

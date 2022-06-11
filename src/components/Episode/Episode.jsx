@@ -1,11 +1,11 @@
-import { data } from "autoprefixer";
-import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { NavLink, useParams } from "react-router-dom";
+import axios from "axios";
 import Filters from "../Filters/Filters";
 
 const Episode = () => {
   const [filtered, setFiltered] = useState([]);
+  const [filteredSearch, setFilteredSearch] = useState([]);
   const [status, setStatus] = useState("");
   const [species, setSpecies] = useState("");
   const [gender, setGender] = useState("");
@@ -13,6 +13,7 @@ const Episode = () => {
 
   // Getting the query via useParams Hook
   const params = useParams();
+
   // We split the query to get the episode number
   const [episode, setEpisode] = useState(params?.id?.split("E")[1]);
 
@@ -58,8 +59,8 @@ const Episode = () => {
   useEffect(() => {
     if (search) {
       if (status && species && gender) {
-        setFiltered(
-          filtered?.filter(
+        setFilteredSearch(
+          filtered.filter(
             (character) =>
               character?.data?.status?.toLowerCase() ===
                 status?.toLowerCase() &&
@@ -69,8 +70,8 @@ const Episode = () => {
           )
         );
       } else if (status && species && !gender) {
-        setFiltered(
-          filtered?.filter(
+        setFilteredSearch(
+          filtered.filter(
             (character) =>
               character?.data?.status?.toLowerCase() ===
                 status?.toLowerCase() &&
@@ -78,8 +79,8 @@ const Episode = () => {
           )
         );
       } else if (status && !species && gender) {
-        setFiltered(
-          filtered?.filter(
+        setFilteredSearch(
+          filtered.filter(
             (character) =>
               character?.data?.status?.toLowerCase() ===
                 status?.toLowerCase() &&
@@ -87,8 +88,8 @@ const Episode = () => {
           )
         );
       } else if (!status && species && gender) {
-        setFiltered(
-          filtered?.filter(
+        setFilteredSearch(
+          filtered.filter(
             (character) =>
               character?.data?.species?.toLowerCase() ===
                 species?.toLowerCase() &&
@@ -96,22 +97,22 @@ const Episode = () => {
           )
         );
       } else if (status) {
-        setFiltered(
-          filtered?.filter(
+        setFilteredSearch(
+          filtered.filter(
             (character) =>
               character?.data?.status?.toLowerCase() === status?.toLowerCase()
           )
         );
       } else if (species) {
-        setFiltered(
-          filtered?.filter(
+        setFilteredSearch(
+          filtered.filter(
             (character) =>
               character?.data?.species?.toLowerCase() === species?.toLowerCase()
           )
         );
       } else if (gender) {
-        setFiltered(
-          filtered?.filter(
+        setFilteredSearch(
+          filtered.filter(
             (character) =>
               character?.data?.gender?.toLowerCase() === gender?.toLowerCase()
           )
@@ -184,20 +185,8 @@ const Episode = () => {
   // Custom Search
   useEffect(() => {
     if (search) {
-      if (status) {
-        setFiltered(
-          filtered?.filter((character) =>
-            character?.data?.name?.toLowerCase().includes(search?.toLowerCase())
-          )
-        );
-      } else if (gender) {
-        setFiltered(
-          filtered?.filter((character) =>
-            character?.data?.name?.toLowerCase().includes(search?.toLowerCase())
-          )
-        );
-      } else if (species) {
-        setFiltered(
+      if (status || gender || species) {
+        setFilteredSearch(
           filtered?.filter((character) =>
             character?.data?.name?.toLowerCase().includes(search?.toLowerCase())
           )
@@ -209,11 +198,6 @@ const Episode = () => {
           )
         );
       }
-    } else {
-      setFiltered(filtered);
-      setStatus("");
-      setGender("");
-      setSpecies("");
     }
   }, [search]);
 
@@ -243,7 +227,38 @@ const Episode = () => {
           />
         </div>
         <div className="flex col-span-4 flex-wrap justify-start gap-10 mx-auto justify-center">
-          {status || species || gender || search ? (
+          {search && (status || gender || species) ? (
+            filteredSearch?.map((character) => (
+              <NavLink
+                to={`/character/${character?.data?.id}`}
+                key={character?.data?.id}
+                className="rounded-t-xl relative max-h-96 transition duration-300 ease hover:shadow-lg hover:bg-slate-400 hover:text-white border-2 border-neutral-900"
+              >
+                <img
+                  alt={character?.data?.name}
+                  className="w-64 h-64 bg-contain rounded-t-xl"
+                  src={character?.data?.image}
+                />
+                {character?.data?.status === "Dead" && (
+                  <h1 className="absolute top-1/3 right-1/3 text-4xl font-bold">
+                    DEAD
+                  </h1>
+                )}
+                <div className="p-2">
+                  <h2 className="text-md border-b py-1 font-semibold">
+                    {character?.data?.name}
+                  </h2>
+                  <div>
+                    <h4 className="max-w-fit text-yellow-700 py-1">
+                      Location:
+                      <span> </span>
+                      <span>{character?.data?.location?.name}</span>
+                    </h4>
+                  </div>
+                </div>
+              </NavLink>
+            ))
+          ) : status || species || gender || search ? (
             filtered?.length > 0 ? (
               filtered?.map((character) => (
                 <NavLink
