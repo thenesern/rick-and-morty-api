@@ -24,7 +24,7 @@ const Cards = ({ data, search }) => {
   }, [data, search]);
 
   return (
-    <div className="container mt-10 mx-auto flex flex-wrap gap-3">
+    <div className="container mt-10 mx-auto flex flex-wrap gap-3 px-4">
       {search
         ? episodes?.map((episode) => (
             <NavLink to={`/episode/${episode.episode}`}>
