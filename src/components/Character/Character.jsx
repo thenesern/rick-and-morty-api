@@ -20,11 +20,17 @@ const Character = () => {
   }, [id]);
 
   return (
-    <div className="container mx-auto flex justify-center">
-      <div className="border-2 border-neutral-800 rounded-t-xl">
-        <p className="p-2 font-semibold text-2xl text-gray-800">{name}</p>
-        <img alt={name} className="w-100" src={image} />
-        <ul className="p-2">
+    <div className="container mx-auto flex justify-center gap-10 items-center bg-slate-100 p-20 rounded-xs">
+      <img
+        alt={name}
+        className=" w-100 rounded-full border-2 border-stone-500 drop-shadow-2xl"
+        src={image}
+      />
+      <div className="w-96 h-full border p-3  border-neutral-300 rounded-xl ">
+        <p className="p-2 font-semibold text-2xl text-gray-800 border-b mx-2">
+          {name}
+        </p>
+        <ul className="p-2 flex flex-col gap-2">
           <li className="font-semibold">
             Status: <span className="font-light">{status}</span>
           </li>
