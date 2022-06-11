@@ -47,22 +47,23 @@ const Episode = () => {
       // IIFE
     })();
   }, [api]);
-
+  console.log(characters);
   return (
     <div className="container mx-auto">
       <h1 className="text-center font-semibold">
         Episode: {infos?.name} ({infos?.episode})
       </h1>
       <p className="text-center font-light p-1">{infos?.air_date}</p>
-      <NavLink
-        to="/"
-        className="flex my-10 flex-wrap justify-start gap-10 mx-auto justify-center cursor-pointer"
-      >
+      <div className="flex my-10 flex-wrap justify-start gap-10 mx-auto justify-center cursor-pointer">
         {characters?.map((character) => (
-          <div className="rounded-t-xl relative transition duraiton-300 ease hover:shadow-lg hover:bg-slate-400 hover:text-white border-2 border-neutral-900 rounded-sm">
+          <NavLink
+            to={`/character/${character?.data?.id}`}
+            key={character?.data?.id}
+            className="rounded-t-xl relative transition duration-300 ease hover:shadow-lg hover:bg-slate-400 hover:text-white border-2 border-neutral-900"
+          >
             <img
               alt={character?.data?.name}
-              className="w-64 h-64 bg-contain  rounded-t-xl"
+              className="w-64 h-64 bg-contain rounded-t-xl"
               src={character?.data?.image}
             />
             {character?.data?.status === "Dead" && (
@@ -75,16 +76,16 @@ const Episode = () => {
                 {character?.data?.name}
               </h2>
               <div>
-                <h4 className=" max-w-fit text-yellow-700 py-1">
+                <h4 className="max-w-fit text-yellow-700 py-1">
                   Location:
                   <span> </span>
                   <span>{character?.data?.location?.name}</span>
                 </h4>
               </div>
             </div>
-          </div>
+          </NavLink>
         ))}
-      </NavLink>
+      </div>
     </div>
   );
 };

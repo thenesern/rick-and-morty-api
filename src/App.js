@@ -9,6 +9,7 @@ import Pagination from "./components/Pagination/Pagination";
 import Episode from "./components/Episode/Episode";
 // Axios
 import axios from "axios";
+import Character from "./components/Character/Character";
 
 function App() {
   return (
@@ -18,7 +19,8 @@ function App() {
       </div>
       <Routes>
         <Route path="/" element={<Home />} exact />
-        <Route path="/episode/:id" element={<Episode />} exact />
+        <Route path="/episode/:id" element={<Episode />} />
+        <Route path="/character/:id" element={<Character />} />
       </Routes>
     </Router>
   );
