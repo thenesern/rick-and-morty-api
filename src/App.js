@@ -2,7 +2,6 @@ import React, { useState, useEffect, useLayoutEffect } from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 // Components
 import Cards from "./components/Cards/Cards";
-import Filters from "./components/Filters/Filters";
 import NavBar from "./components/NavBar/NavBar";
 import Search from "./components/Search/Search";
 import Pagination from "./components/Pagination/Pagination";
@@ -51,7 +50,6 @@ const Home = () => {
       <div>
         <Search setSearch={setSearch} />
         <div>
-          {/*  <Filters /> */}
           <Cards data={episodes} search={search} />
         </div>
         <Pagination
