@@ -24,7 +24,7 @@ const NavBar = () => {
             </button>
           </a>
           <a
-            href="https://github.com/thenesern"
+            href="https://github.com/thenesern/rick-and-morty-api"
             target="_blank"
             rel="noreferrer"
           >
@@ -32,7 +32,7 @@ const NavBar = () => {
               className="transition duration-300 ease bg-white hover:bg-slate-100  md:px-6 xl:px-10 lg:px-10 2xl:px-12 px-4
          group-hover:text-white p-2 rounded-md"
             >
-              Author
+              Source
             </button>
           </a>
         </div>
