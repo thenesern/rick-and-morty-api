@@ -207,11 +207,11 @@ const Episode = () => {
         Episode: {infos?.name} ({infos?.episode})
       </h1>
       <p className="text-center font-light p-1">{infos?.air_date}</p>
-      <div className="container lg:grid lg:grid-cols-5  my-10">
+      <div className="container lg:grid lg:grid-cols-5 my-10 flex flex-col gap-10">
         <div className="flex flex-col gap-10">
           <input
             onChange={(e) => setSearch(e.target.value)}
-            className="w-full p-2 outline-none bg-slate-200"
+            className="w-full p-2 outline-none bg-gray-100"
             type="text"
             placeholder="Search for a character"
           />

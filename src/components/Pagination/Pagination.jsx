@@ -11,17 +11,18 @@ const Pagination = ({ setPage, page, length, pages }) => {
     setPage(number);
   };
   return (
-    <div className="container mx-auto my-10 px-12 flex justify-between">
-      {page !== 1 ? (
-        <button
-          onClick={prev}
-          className="bg-rose-800 text-white px-8 py-3 rounded-full"
-        >
-          Prev
-        </button>
-      ) : (
-        <div></div>
-      )}
+    <div className="container mx-auto my-10 px-4 2xl:px-12 flex justify-between">
+      <button
+        onClick={prev}
+        disabled={page === 1 ? true : false}
+        className={
+          page === 1
+            ? "bg-rose-800 text-white px-6 xl:px-8 py-3 rounded-full opacity-50"
+            : "bg-rose-800 text-white px-6 xl:px-8 py-3 rounded-full"
+        }
+      >
+        Prev
+      </button>
       <div className="flex gap-2">
         {pages?.map((p, i) => (
           <button
@@ -37,16 +38,17 @@ const Pagination = ({ setPage, page, length, pages }) => {
           </button>
         ))}
       </div>
-      {page !== length ? (
-        <button
-          onClick={next}
-          className="bg-rose-800 text-white px-8 py-3 rounded-full"
-        >
-          Next
-        </button>
-      ) : (
-        <div></div>
-      )}
+      <button
+        onClick={next}
+        disabled={page === length ? true : false}
+        className={
+          page === length
+            ? "bg-rose-800 text-white px-6 xl:px-8 py-3 rounded-full opacity-50"
+            : "bg-rose-800 text-white px-6 xl:px-8 py-3 rounded-full"
+        }
+      >
+        Next
+      </button>
     </div>
   );
 };

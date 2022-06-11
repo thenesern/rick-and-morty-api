@@ -47,18 +47,16 @@ const Home = () => {
 
   return (
     <div>
-      <div>
+      <div className="min-h-screen">
         <Search setSearch={setSearch} />
-        <div>
-          <Cards data={episodes} search={search} />
-        </div>
-        <Pagination
-          setPage={setPage}
-          page={page}
-          pages={pages}
-          length={episodes?.data?.info?.pages}
-        />
+        <Cards data={episodes} search={search} />
       </div>
+      <Pagination
+        setPage={setPage}
+        page={page}
+        pages={pages}
+        length={episodes?.data?.info?.pages}
+      />
     </div>
   );
 };
