@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 
 const Pagination = ({ setPage, page, length, pages }) => {
   let prev = () => {
