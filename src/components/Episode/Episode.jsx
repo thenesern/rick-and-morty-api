@@ -247,7 +247,7 @@ const Episode = () => {
                 <NavLink
                   to={`/character/${character?.data?.id}`}
                   key={character?.data?.id}
-                  className="rounded-t-xl relative max-h-96 transition duration-300 ease hover:shadow-lg hover:bg-slate-400 hover:text-white border-2 border-neutral-900"
+                  className="rounded-t-xl relative transition duration-300 ease hover:shadow-lg hover:bg-slate-400 hover:text-white border-2 border-neutral-900 h-fit min-h-96"
                 >
                   <img
                     alt={character?.data?.name}
@@ -260,11 +260,11 @@ const Episode = () => {
                     </h1>
                   )}
                   <div className="p-2">
-                    <h2 className="max-w-fit text-md border-b py-1 font-semibold">
+                    <h2 className="max-w-fit min-w-full text-md border-b py-1 font-semibold">
                       {character?.data?.name}
                     </h2>
-                    <div>
-                      <h4 className="max-w-fit text-yellow-700 py-1">
+                    <div className="h-12">
+                      <h4 className="max-w-fit text-yellow-700 py-1 text-md">
                         Location:
                         <span> </span>
                         <span>{character?.data?.location?.name}</span>
@@ -279,7 +279,7 @@ const Episode = () => {
                   <NavLink
                     to={`/character/${character?.data?.id}`}
                     key={character?.data?.id}
-                    className="rounded-t-xl relative max-h-96 transition duration-300 ease hover:shadow-lg hover:bg-slate-400 hover:text-white border-2 border-neutral-900"
+                    className="rounded-t-xl relative transition duration-300 ease hover:shadow-lg hover:bg-slate-400 hover:text-white border-2 border-neutral-900 h-fit min-h-96"
                   >
                     <img
                       alt={character?.data?.name}
@@ -292,11 +292,11 @@ const Episode = () => {
                       </h1>
                     )}
                     <div className="p-2">
-                      <h2 className="max-w-fit text-md border-b py-1 font-semibold">
+                      <h2 className="max-w-fit min-w-full text-md border-b py-1 font-semibold">
                         {character?.data?.name}
                       </h2>
-                      <div>
-                        <h4 className="max-w-fit text-yellow-700 py-1">
+                      <div className="h-12">
+                        <h4 className="max-w-fit text-yellow-700 py-1 text-md">
                           Location:
                           <span> </span>
                           <span>{character?.data?.location?.name}</span>
@@ -313,7 +313,7 @@ const Episode = () => {
                 <NavLink
                   to={`/character/${character?.data?.id}`}
                   key={character?.data?.id}
-                  className="rounded-t-xl relative transition duration-300 ease hover:shadow-lg hover:bg-slate-400 hover:text-white border-2 border-neutral-900"
+                  className="rounded-t-xl relative transition duration-300 ease hover:shadow-lg hover:bg-slate-400 hover:text-white border-2 border-neutral-900 h-fit min-h-96"
                 >
                   <img
                     alt={character?.data?.name}
@@ -329,8 +329,8 @@ const Episode = () => {
                     <h2 className="max-w-fit min-w-full text-md border-b py-1 font-semibold">
                       {character?.data?.name}
                     </h2>
-                    <div>
-                      <h4 className="max-w-fit text-yellow-700 py-1 text-xs">
+                    <div className="h-12">
+                      <h4 className="max-w-fit text-yellow-700 py-1 text-md">
                         Location:
                         <span> </span>
                         <span>{character?.data?.location?.name}</span>
