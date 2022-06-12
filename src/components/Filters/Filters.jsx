@@ -14,7 +14,7 @@ const Filters = ({
       <div className="flex flex-col justify-between gap-5">
         <div className="flex flex-col gap-3">
           <h3 className="text-center bg-slate-100 py-1">Status</h3>
-          <ul className="flex flex-wrap gap-3">
+          <ul className="flex flex-wrap gap-3 justify-center">
             <li>
               <button
                 onClick={(e) => {
@@ -76,7 +76,7 @@ const Filters = ({
         </div>
         <div className="flex flex-col gap-3">
           <h3 className="text-center bg-slate-100 py-1">Species</h3>
-          <ul className="flex flex-wrap gap-3">
+          <ul className="flex flex-wrap gap-3 justify-center">
             <li>
               <button
                 onClick={(e) => {
@@ -290,7 +290,7 @@ const Filters = ({
         </div>
         <div className="flex flex-col gap-3">
           <h3 className="text-center bg-slate-100 py-1">Gender</h3>
-          <ul className="flex flex-wrap gap-3">
+          <ul className="flex flex-wrap gap-3 justify-center">
             <li>
               <button
                 onClick={(e) => {

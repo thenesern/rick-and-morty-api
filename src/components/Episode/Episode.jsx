@@ -210,7 +210,7 @@ const Episode = () => {
   }, [search]);
 
   return (
-    <div className="container mx-auto px-4">
+    <div className="container mx-auto px-10">
       <h1 className="text-center font-semibold">
         Episode: {infos?.name} ({infos?.episode})
       </h1>

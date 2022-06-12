@@ -41,8 +41,8 @@ const Cards = ({ data, search, setSearch }) => {
   }, [season]);
 
   return (
-    <div className="container mt-10 mx-auto flex flex-wrap gap-3 px-4 lg:grid lg:grid-cols-5 md:justify-center">
-      <div className="flex flex-col">
+    <div className="container px-10 mt-10 mx-auto flex flex-wrap gap-3 px-4 lg:grid lg:grid-cols-5 md:justify-center">
+      <div className="flex flex-col col-span-1">
         <Search setSearch={setSearch} />
         <h2 className="text-center font-semibold pb-5">Filters</h2>
         <ul className="flex flex-wrap gap-2 justify-center">
@@ -188,7 +188,7 @@ const Cards = ({ data, search, setSearch }) => {
           </li>
         </ul>
       </div>
-      <div className="flex flex-col xl:flex-row lg:flex-row md:flex-row xl:col-span-4 lg:col-span-4 2xl:col-span-4 xl:flex-wrap lg:flex-wrap md:flex-wrap mx-auto 2xl:flex-wrap justify-start md:justify-center gap-2 mt-3">
+      <div className="flex flex-col w-full xl:flex-row lg:flex-row md:flex-row xl:col-span-4 lg:col-span-4 2xl:col-span-4 xl:flex-wrap lg:flex-wrap md:flex-wrap mx-auto 2xl:flex-wrap justify-start md:justify-center gap-2 mt-3">
         {filtered.length > 0
           ? filtered?.map((episode) => (
               <NavLink to={`/episode/${episode?.episode}`} key={episode?.id}>
@@ -207,7 +207,7 @@ const Cards = ({ data, search, setSearch }) => {
             ))
           : episodes?.map((episode) => (
               <NavLink to={`/episode/${episode?.episode}`} key={episode?.id}>
-                <button className="p-3 rounded-sm bg-zinc-900 cursor-pointer w-full md:w-36 lg:w-48 xl:w-64 h-36 ">
+                <button className="p-3 rounded-sm bg-zinc-900 cursor-pointer w-full md:w-36 lg:w-48 xl:w-64 h-36">
                   <h2 className="text-md text-slate-100 border-b">
                     {episode?.episode}
                   </h2>

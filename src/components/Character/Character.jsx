@@ -22,7 +22,7 @@ const Character = () => {
   }, [id]);
 
   return (
-    <div className="container mx-auto px-4">
+    <div className="container mx-auto px-10">
       <div className="mx-auto lg:flex justify-center gap-10 lg:items-center xs:items-start bg-slate-100 py-20 rounded-xs">
         <img
           alt={name}

@@ -11,7 +11,7 @@ const Pagination = ({ setPage, page, length, pages }) => {
     setPage(number);
   };
   return (
-    <div className="container mx-auto my-10 px-4 2xl:px-12 flex justify-between">
+    <div className="container mx-auto my-10 px-10 2xl:px-12 flex justify-between">
       <button
         onClick={prev}
         disabled={page === 1 ? true : false}
